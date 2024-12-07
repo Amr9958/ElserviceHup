@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_single_quotes
-class Assets {
-  Assets._();
+class AppImages {
+  AppImages._();
   
   /// Assets for imagesAppIcon
   /// assets/images/app_icon.png
@@ -14,10 +14,6 @@ class Assets {
   /// assets/images/Check.svg
   static const String imagesCheck = "assets/images/Check.svg";
 
-  /// Assets for imagesEdit
-  /// assets/images/edit.svg
-  static const String imagesEdit = "assets/images/edit.svg";
-
   /// Assets for imagesFacebookIcon
   /// assets/images/facebook_icon.svg
   static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";
@@ -30,17 +26,9 @@ class Assets {
   /// assets/images/filter.svg
   static const String imagesFilter = "assets/images/filter.svg";
 
-  /// Assets for imagesFilter2
-  /// assets/images/filter2.svg
-  static const String imagesFilter2 = "assets/images/filter2.svg";
-
   /// Assets for imagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
-
-  /// Assets for imagesLocation
-  /// assets/images/location.svg
-  static const String imagesLocation = "assets/images/location.svg";
 
   /// Assets for imagesLogo
   /// assets/images/logo.svg
@@ -81,10 +69,6 @@ class Assets {
   /// Assets for imagesSplashBottom
   /// assets/images/splash_bottom.svg
   static const String imagesSplashBottom = "assets/images/splash_bottom.svg";
-
-  /// Assets for imagesTrash
-  /// assets/images/trash.svg
-  static const String imagesTrash = "assets/images/trash.svg";
 
   /// Assets for imagesVector
   /// assets/images/Vector.svg
