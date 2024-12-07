@@ -1,1 +1,39 @@
-{}
+{
+    "onBoardingOneTitle": "Welcome to ",
+    "onBoardingTwoTitle": "Search and Shop",
+    "onBoardingSubTitle": "Discover a unique shopping experience with FruitHUB. Explore our wide collection of premium fresh fruits and enjoy the best deals and high quality.",
+    "onBoardingTwoSubTitle": "We offer you the finest carefully selected fruits. Check out the details, images, and reviews to ensure you choose the perfect fruit.",
+    "onBoardingSkip": "Skip",
+    "onBoardingButton": "Start Now",
+
+    "loginAppBarTitle": "Login",
+    "loginForgotPassword" : "Did you forget your password ?",
+    "loginDontHaveAccount" : "Dont have an account ? ",
+    "loginRegisterNow" : "Register Now",
+    "loginDivider": "or",
+    "loginWithGoogle": "Login with Google",
+    "loginWithFacebook": "Login with Facebook",
+    "LoginWithApple": "Login with Apple",
+
+    "emailField": "Email",
+    "passwordField": "Password",
+    "nameField":"Full Name",
+
+    "sindUPAppBarTitle": "New Account",
+    "singUpCheckAccount": "Already have an account ?",
+    "singUpLogin": "Login",
+
+
+    "forgetPasswordAppBarTitle": "Forget Password",
+    "ForgotPasswordTitle":"Don't worry, just enter your phone number and we will send you a verification code.",
+    "forgetPasswordButton":"Forget Password",
+
+
+    "changePasswordAppBarTitle": "Change Password",
+    "changePasswordButton": "Create a New Password",
+    "changePasswordPassword": "Password",
+    "changePasswordConfirmPassword": "Confirm Password",
+    "changePasswordTitle": "Create a new password to log in"
+
+
+}

@@ -1,1 +1,51 @@
-{}
+{
+    "onBoardingOneTitle": "مرحبا بك في",
+    "onBoardingTwoTitle": "ابحث وتسوق",
+    "onBoardingSubTitle": "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
+    "onBoardingTwoSubTitle" :"نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية",
+    "onBoardingSkip": "تخطى",
+    "onBoardingButton": "ابدا الان",
+
+
+
+    "loginAppBarTitle": "تسجيل دخول",
+    "loginForgotPassword": "هل نسيت كلمة المرور ؟",
+    "loginDontHaveAccount": "ليس لديك حساب ؟ ",
+    "loginRegisterNow": "قم بانشاء حساب",
+   "loginDivider": "او",
+   "loginWithGoogle": "تسجيل دخول باستخدام جوجل",
+   "loginWithFacebook": "تسجيل دخول باستخدام فيسبوك",
+   "LoginWithApple": "تسجيل دخول باستخدام ابل",
+
+
+
+   "emailField": "البريد الالكتروني",
+   "passwordField": "كلمة المرور",
+   "nameField":"الاسم كامل",
+
+
+
+    "sindUPAppBarTitle": "حساب جديد",
+    "singUpCheckAccount": "تمتلك حساب بالفعل ؟",
+    "singUpLogin": "تسجيل دخول" ,
+
+    "forgetPasswordAppBarTitle": "نسيان كلمة المرور",
+    "ForgotPasswordTitle":"لا تقلق ، ما عليك سوى كتابة رقم هاتفك وسنرسل رمز التحقق.",
+    "forgetPasswordButton": "نسيت كلمة المرور ",
+
+    "changePasswordAppBarTitle": "تغيير كلمة المرور",
+    "changePasswordButton": "أنشيء كلمة مرور جديدة",
+    "changePasswordPassword": "كلمة المرور ",
+    "changePasswordConfirmPassword": "تاكيد كلمة المرور",
+    "changePasswordTitle": "قم بإنشاء كلمة مرور جديدة لتسجيل الدخول"
+    
+  
+
+
+
+
+
+
+
+
+}
