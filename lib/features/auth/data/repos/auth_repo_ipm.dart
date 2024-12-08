@@ -1,51 +1,51 @@
 import 'package:dartz/dartz.dart';
-
 import '../../../../core/errors/exception.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../core/services/firebase_auth_services.dart';
+import '../../../../core/services/supabase_auth_services.dart';
 import '../../domain/entity/user_entity.dart';
 import '../../domain/repos/auth_repo.dart';
 import '../model/user_model.dart';
 
 class AuthRepoIpm implements AuthRepo {
-  final FirebaseAuthServices firebaseAuthServices;
 
-  AuthRepoIpm({required this.firebaseAuthServices});
+  final SupabaseAuthServices supaBaseAuthServices;
+
+  AuthRepoIpm( {required this.supaBaseAuthServices});
 
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       String email, String password, String name) async {
     try {
-      final user = await firebaseAuthServices.createUserWithEmailAndPassword(
+      final users = await supaBaseAuthServices.signInWithEmailAndPassword(
           email: email, password: password);
-      return right(UserModel.fromFirebase(user));
+      return right(UserModel.fromSupabase(users ));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     }
   }
 
-  @override
-  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
-      String email, String password) async {
-    try {
-      final user = await firebaseAuthServices.loginWithEmailAndPassword(
-          email: email, password: password);
-      return right(UserModel.fromFirebase(user));
-    } on CustomException catch (e) {
-      return left(ServerFailure(e.message));
-    }
-  }
+  // @override
+  // Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
+  //     String email, String password) async {
+  //   try {
+  //     final user = await firebaseAuthServices.loginWithEmailAndPassword(
+  //         email: email, password: password);
+  //     return right(UserModel.fromFirebase(user));
+  //   } on CustomException catch (e) {
+  //     return left(ServerFailure(e.message));
+  //   }
+  // }
 
   @override
   Future<Either<Failure, UserEntity>> loginWithGoogle() async {
     try {
-      final user = await firebaseAuthServices.loginWithGoogle();
-      return right(UserModel.fromFirebase(user));
+      final user = await supaBaseAuthServices.loginWithGoogle();
+      return right(UserModel.fromSupabase(user));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     }
   }
-
 
   // Future<Either<Failure, UserEntity>> loginWithFacebook() async {
   //   try {

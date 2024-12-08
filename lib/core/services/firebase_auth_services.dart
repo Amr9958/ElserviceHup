@@ -89,7 +89,6 @@ class FirebaseAuthServices {
 }
 
 
-
 // String _mapFirebaseAuthExceptionToString(FirebaseAuthException e) {
 //   final bool arabic = isArabic();
 //   switch (e.code) {
