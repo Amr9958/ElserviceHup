@@ -17,7 +17,7 @@ class AuthRepoIpm implements AuthRepo {
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       String email, String password, String name) async {
     try {
-      final users = await supaBaseAuthServices.signInWithEmailAndPassword(
+      final users = await supaBaseAuthServices.createUserWithEmailAndPassword(
           email: email, password: password);
       return right(UserModel.fromSupabase(users ));
     } on CustomException catch (e) {
@@ -25,17 +25,17 @@ class AuthRepoIpm implements AuthRepo {
     }
   }
 
-  // @override
-  // Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
-  //     String email, String password) async {
-  //   try {
-  //     final user = await firebaseAuthServices.loginWithEmailAndPassword(
-  //         email: email, password: password);
-  //     return right(UserModel.fromFirebase(user));
-  //   } on CustomException catch (e) {
-  //     return left(ServerFailure(e.message));
-  //   }
-  // }
+  @override
+  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      final user = await supaBaseAuthServices.loginWithEmailAndPassword(
+          email: email, password: password);
+      return right(UserModel.fromSupabase(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    }
+  }
 
   @override
   Future<Either<Failure, UserEntity>> loginWithGoogle() async {
@@ -47,13 +47,13 @@ class AuthRepoIpm implements AuthRepo {
     }
   }
 
-  // Future<Either<Failure, UserEntity>> loginWithFacebook() async {
-  //   try {
-  //     final user = await firebaseAuthServices.loginWithFacebook();
-  //     return right(UserModel.fromFirebase(user));
-  //   } on CustomException catch (e) {
-  //     return left(ServerFailure(e.message));
-  //   }
-  // }
-// }
+  Future<Either<Failure, UserEntity>> loginWithFacebook() async {
+    try {
+      final user = await supaBaseAuthServices.signInWithFacebook();
+      return right(UserModel.fromSupabase(user!));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    }
+  }
 }
+

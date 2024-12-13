@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -9,7 +9,7 @@ import '../errors/exception.dart';
 class SupabaseAuthServices {
   final client = Supabase.instance.client;
 
-  Future<User> signInWithEmailAndPassword(
+  Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
       final response = await client.auth.signUp(
@@ -74,21 +74,25 @@ class SupabaseAuthServices {
     }
   }
 
-// Future<void> signInWithFacebook() async {
-//   await supabase.auth.signInWithOAuth(
-//     OAuthProvider.facebook,
-//     redirectTo: kIsWeb ? null : 'my.scheme://my-host', // Optionally set the redirect link to bring back the user via deeplink.
-//     authScreenLaunchMode:
-//         kIsWeb ? LaunchMode.platformDefault : LaunchMode.externalApplication, // Launch the auth screen in a new webview on mobile.
-//   );
-// }
-
-// await supabase.auth.signInWithOAuth({
-//   provider,
-//   options: {
-//     redirectTo: `http://example.com/auth/callback`,
-//   },
-// })
+  Future<User?> signInWithFacebook() async {
+    try {
+      final response = await client.auth.signInWithOAuth(
+        OAuthProvider.facebook,
+        redirectTo: kIsWeb ? null : 'com.group.Elservices://login-callback',
+        authScreenLaunchMode: kIsWeb
+            ? LaunchMode.platformDefault
+            : LaunchMode.externalApplication,
+      );
+      log(response.toString());
+      if (response == true) {
+        return client.auth.currentUser;
+      } else {
+        return null;
+      }
+    } on AuthException catch (e) {
+      throw CustomException(message: _mapSupabaseAuthErrorToString(e.code!));
+    }
+  }
 
   String _mapSupabaseAuthErrorToString(String errorCode) {
     final bool arabic = isArabic();

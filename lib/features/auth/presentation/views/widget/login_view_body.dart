@@ -83,13 +83,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 20.hSizedBox,
                 CustomButton(
                     onPressed: () {
-                      // if (formKey.currentState!.validate()) {
-                      //   formKey.currentState!.save();
-                      //   context.read<LoginCubit>().loginWithEmailAndPassword(
-                      //         email: emailController.text,
-                      //         password: passwordController.text,
-                      //       );
-                      // }
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
+                        context.read<LoginCubit>().loginWithEmailAndPassword(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                      }
                     },
                     text: S.of(context).loginAppBarTitle),
                 15.hSizedBox,
@@ -118,7 +118,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 SocialLoginButton(
                   image: AppImages.imagesFacebookIcon,
                   onPress: () {
-                    // context.read<LoginCubit>().loginWithFacebook();
+                    context.read<LoginCubit>().loginWithFacebook();
                   },
                   title: S.of(context).loginWithFacebook,
                 ),
