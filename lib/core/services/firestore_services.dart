@@ -10,6 +10,7 @@ class FirestoreServices implements DatabaseServices {
     await firestore.collection(path).add(data);
   }
 
+  @override
   Future<void> getData({required String path}) async {
     await firestore.collection(path).get();
   }

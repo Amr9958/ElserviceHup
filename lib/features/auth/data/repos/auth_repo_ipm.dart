@@ -8,10 +8,9 @@ import '../../domain/repos/auth_repo.dart';
 import '../model/user_model.dart';
 
 class AuthRepoIpm implements AuthRepo {
-
   final SupabaseAuthServices supaBaseAuthServices;
 
-  AuthRepoIpm( {required this.supaBaseAuthServices});
+  AuthRepoIpm({required this.supaBaseAuthServices});
 
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
@@ -19,7 +18,7 @@ class AuthRepoIpm implements AuthRepo {
     try {
       final users = await supaBaseAuthServices.createUserWithEmailAndPassword(
           email: email, password: password);
-      return right(UserModel.fromSupabase(users ));
+      return right(UserModel.fromSupabase(users));
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     }
@@ -47,6 +46,7 @@ class AuthRepoIpm implements AuthRepo {
     }
   }
 
+  @override
   Future<Either<Failure, UserEntity>> loginWithFacebook() async {
     try {
       final user = await supaBaseAuthServices.signInWithFacebook();
@@ -56,4 +56,3 @@ class AuthRepoIpm implements AuthRepo {
     }
   }
 }
-

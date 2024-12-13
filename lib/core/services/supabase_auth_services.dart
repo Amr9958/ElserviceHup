@@ -54,7 +54,7 @@ class SupabaseAuthServices {
       }
 
       final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
+          await googleUser.authentication;
 
       final String? accessToken = googleAuth.accessToken;
       final String? idToken = googleAuth.idToken;
@@ -64,7 +64,7 @@ class SupabaseAuthServices {
       }
       final response = await client.auth.signInWithIdToken(
         provider: OAuthProvider.google,
-        idToken: idToken!,
+        idToken: idToken,
         accessToken: accessToken,
       );
 
