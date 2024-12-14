@@ -33,7 +33,7 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         uId: user.id,
       );
-      await addUserData(user: userEntity);
+      // await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
@@ -61,10 +61,10 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
-      var userEntity = await getUserData(uid: user.id);
-      await saveUserData(user: userEntity);
+      // var userEntity = await getUserData(uid: user.id);
+      // await saveUserData(user: userEntity);
       return right(
-        userEntity,
+        UserModel.fromFirebaseUser(user)
       );
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));

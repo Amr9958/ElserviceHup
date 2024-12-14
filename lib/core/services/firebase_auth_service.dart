@@ -19,6 +19,7 @@ class FirebaseAuthService {
       final response = await client.auth.signUp(
         email: email,
         password: password,
+        
       );
       return response.user!;
     } on AuthException catch (e) {
