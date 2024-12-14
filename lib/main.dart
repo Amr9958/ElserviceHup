@@ -2,73 +2,52 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:fruits_hub/firebase_options.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:fruits_hub/core/helper_functions/on_generate_routes.dart';
+import 'package:fruits_hub/core/services/get_it_service.dart';
+import 'package:fruits_hub/core/services/shared_preferences_singleton.dart';
+import 'package:fruits_hub/core/utils/app_colors.dart';
 
-import 'core/services/bloc_observer.dart';
-import 'core/helper_functions/app_route.dart';
-import 'core/styles/app_theme.dart';
-import 'core/styles/cubit/theme_cubit.dart';
-import 'core/styles/lang/lang_cubit.dart';
-import 'core/services/service_locator.dart';
-import 'features/splash/presentation/view/splash_view.dart';
+import 'core/services/custom_bloc_observer.dart';
+import 'features/splash/presentation/views/splash_view.dart';
+import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
-Future<void> main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Supabase.initialize(
-    url: 'https://mfictrvhmblyljrsajqi.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1maWN0cnZobWJseWxqcnNhanFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM1ODEzNTAsImV4cCI6MjA0OTE1NzM1MH0.eVpebCQX5d0Kf5UFbOXN_x0xBVUSakPpwxVr_kaSxOQ',
-  );
-  await setupServiceLocator();
+
+  Bloc.observer = CustomBlocObserver();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
- 
-  Bloc.observer = MyBlocObserver();
-  runApp(const ServiceHup());
+  await Prefs.init();
+
+  setupGetit();
+  runApp(const FruitHub());
 }
 
-class ServiceHup extends StatelessWidget {
-  const ServiceHup({super.key});
+class FruitHub extends StatelessWidget {
+  const FruitHub({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => ThemeCubit()),
-        BlocProvider(create: (context) => LanguageCubit()),
+    return MaterialApp(
+      theme: ThemeData(
+          fontFamily: 'Cairo',
+          scaffoldBackgroundColor: Colors.white,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.primaryColor,
+          )),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
       ],
-      child: BlocBuilder<ThemeCubit, ThemeState>(
-        builder: (context, themeState) {
-          return BlocBuilder<LanguageCubit, LanguageState>(
-            builder: (context, languageState) {
-              if (themeState is ThemeChanged &&
-                  languageState is LanguageChanged) {
-                return MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  locale: languageState.locale == "en"
-                      ? const Locale("en")
-                      : const Locale("ar"),
-                  theme: appThemeData[themeState.appTheme]!,
-                  localizationsDelegates: const [
-                    S.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  supportedLocales: S.delegate.supportedLocales,
-                  onGenerateRoute: onGenerateRoute,
-                  initialRoute: SplashView.splashRoute,
-                );
-              } else {
-                return const SizedBox();
-              }
-            },
-          );
-        },
-      ),
+      supportedLocales: S.delegate.supportedLocales,
+      locale: const Locale('ar'),
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: SplashView.routeName,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -21,53 +21,5 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "ForgotPasswordTitle": MessageLookupByLibrary.simpleMessage(
-            "لا تقلق ، ما عليك سوى كتابة رقم هاتفك وسنرسل رمز التحقق."),
-        "LoginWithApple":
-            MessageLookupByLibrary.simpleMessage("تسجيل دخول باستخدام ابل"),
-        "changePasswordAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
-        "changePasswordButton":
-            MessageLookupByLibrary.simpleMessage("أنشيء كلمة مرور جديدة"),
-        "changePasswordConfirmPassword":
-            MessageLookupByLibrary.simpleMessage("تاكيد كلمة المرور"),
-        "changePasswordPassword":
-            MessageLookupByLibrary.simpleMessage("كلمة المرور "),
-        "changePasswordTitle": MessageLookupByLibrary.simpleMessage(
-            "قم بإنشاء كلمة مرور جديدة لتسجيل الدخول"),
-        "emailField": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
-        "forgetPasswordAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("نسيان كلمة المرور"),
-        "forgetPasswordButton":
-            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور "),
-        "loginAppBarTitle": MessageLookupByLibrary.simpleMessage("تسجيل دخول"),
-        "loginDivider": MessageLookupByLibrary.simpleMessage("او"),
-        "loginDontHaveAccount":
-            MessageLookupByLibrary.simpleMessage("ليس لديك حساب ؟ "),
-        "loginForgotPassword":
-            MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور ؟"),
-        "loginRegisterNow":
-            MessageLookupByLibrary.simpleMessage("قم بانشاء حساب"),
-        "loginWithFacebook":
-            MessageLookupByLibrary.simpleMessage("تسجيل دخول باستخدام فيسبوك"),
-        "loginWithGoogle":
-            MessageLookupByLibrary.simpleMessage("تسجيل دخول باستخدام جوجل"),
-        "nameField": MessageLookupByLibrary.simpleMessage("الاسم كامل"),
-        "onBoardingButton": MessageLookupByLibrary.simpleMessage("ابدا الان"),
-        "onBoardingOneTitle":
-            MessageLookupByLibrary.simpleMessage("مرحبا بك في"),
-        "onBoardingSkip": MessageLookupByLibrary.simpleMessage("تخطى"),
-        "onBoardingSubTitle": MessageLookupByLibrary.simpleMessage(
-            "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية."),
-        "onBoardingTwoSubTitle": MessageLookupByLibrary.simpleMessage(
-            "نقدم لك أفضل الفواكه المختارة بعناية. اطلع على التفاصيل والصور والتقييمات لتتأكد من اختيار الفاكهة المثالية"),
-        "onBoardingTwoTitle":
-            MessageLookupByLibrary.simpleMessage("ابحث وتسوق"),
-        "passwordField": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
-        "sindUPAppBarTitle": MessageLookupByLibrary.simpleMessage("حساب جديد"),
-        "singUpCheckAccount":
-            MessageLookupByLibrary.simpleMessage("تمتلك حساب بالفعل ؟"),
-        "singUpLogin": MessageLookupByLibrary.simpleMessage("تسجيل دخول")
-      };
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
 }
