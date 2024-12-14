@@ -13,10 +13,12 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-        title:const Text("الصفحة الشخصية",style: TextStyles.bold19,),
+      appBar: AppBar(
+        title: const Text(
+          "الصفحة الشخصية",
+          style: TextStyles.bold19,
+        ),
         centerTitle: true,
-
       ),
       body: const SafeArea(child: ProfileViewBody()),
     );
@@ -71,38 +73,33 @@ class ProfileViewBody extends StatelessWidget {
             title: "المفضلة",
             image: Assets.imagesVuesaxOutlineHome,
           ),
-          ProfileLisTileWidget(
-              title: "الاشعارات",
-              image: Assets.imagesVuesaxOutlineHome,
-              trailing: Switch(
-                value: false,
-                onChanged: (bool value) {},
-              )),
+          const ProfileLisTileSwitchWidget(
+            title: "الاشعارات",
+            image: Assets.imagesVuesaxOutlineHome,
+          ),
           const ProfileLisTileWidget(
             title: "اللغة",
             image: Assets.imagesVector,
           ),
-          ProfileLisTileWidget(
+          const ProfileLisTileSwitchWidget(
             title: "الوضع",
             image: Assets.imagesVuesaxOutlineHome,
-            trailing: Switch(value: false, onChanged: (value) {}),
           ),
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text("data", style: TextStyles.semiBold16),
           ),
-             const Padding(
-               padding: EdgeInsets.symmetric(vertical: 16.0),
-               child: ProfileLisTileWidget(
-                         title: "اللغة",
-                         image: Assets.imagesVuesaxOutlineHome,
-                       ),
-             ),
-             Padding(
-               padding: const EdgeInsets.all(8.0),
-               child: CustomButton(onPressed: (){}, text: "text"),
-             )
-      
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 16.0),
+            child: ProfileLisTileWidget(
+              title: "اللغة",
+              image: Assets.imagesVuesaxOutlineHome,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CustomButton(onPressed: () {}, text: "text"),
+          )
         ],
       ),
     );
@@ -204,5 +201,49 @@ class ProfileEditImage extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class ProfileLisTileSwitchWidget extends StatefulWidget {
+  const ProfileLisTileSwitchWidget({
+    super.key,
+    required this.image,
+    required this.title,
+  });
+  final String image;
+  final String title;
+
+  @override
+  State<ProfileLisTileSwitchWidget> createState() =>
+      _ProfileLisTileSwitchWidgetState();
+}
+
+class _ProfileLisTileSwitchWidgetState
+    extends State<ProfileLisTileSwitchWidget> {
+  bool isActive = false;
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        leading: SizedBox(
+          height: 20,
+          width: 23,
+          child: SvgPicture.asset(
+            color: AppColors.lightPrimaryColor,
+            widget.image,
+          ),
+        ),
+        title: Text(
+          widget.title,
+          textAlign: TextAlign.right,
+          style: TextStyles.semiBold13.copyWith(
+            color: const Color(0xFF949D9E),
+          ),
+        ),
+        trailing: Switch(
+            value: isActive,
+            onChanged: (value) {
+              isActive = value;
+              setState(() {});
+            }));
   }
 }
