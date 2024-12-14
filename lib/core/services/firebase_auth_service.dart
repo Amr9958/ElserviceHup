@@ -1,10 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-import 'dart:math' as math;
-
-
-// import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl/intl.dart';
@@ -15,13 +9,13 @@ import '../errors/exceptions.dart';
 bool isArabic() {
   return Intl.getCurrentLocale() == 'ar';
 }
+
 class FirebaseAuthService {
   final client = Supabase.instance.client;
-  
 
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
-   try {
+    try {
       final response = await client.auth.signUp(
         email: email,
         password: password,
@@ -46,7 +40,7 @@ class FirebaseAuthService {
   }
 
   Future<User> signInWithGoogle() async {
-     try {
+    try {
       const webClientId =
           '523023284814-q5flar1qif55qao6t81049nc826p20tk.apps.googleusercontent.com';
 
@@ -104,11 +98,6 @@ class FirebaseAuthService {
     }
   }
 
-  /// Generates a cryptographically secure random nonce, to be included in a
-  /// credential request.
-
-  /// Returns the sha256 hash of [input] in hex notation.
-  /// 
   String _mapSupabaseAuthErrorToString(String errorCode) {
     final bool arabic = isArabic();
 
@@ -175,5 +164,4 @@ class FirebaseAuthService {
         return arabic ? 'حدث خطأ غير معروف.' : 'An unknown error occurred.';
     }
   }
-
 }
