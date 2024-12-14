@@ -20,18 +20,18 @@ void main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1maWN0cnZobWJseWxqcnNhanFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM1ODEzNTAsImV4cCI6MjA0OTE1NzM1MH0.eVpebCQX5d0Kf5UFbOXN_x0xBVUSakPpwxVr_kaSxOQ',
   );
-  Bloc.observer = CustomBlocObserver();
+  Bloc.observer = MyBlocObserver();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Prefs.init();
 
   setupGetit();
-  runApp(const FruitHub());
+  runApp(const ServiceHup());
 }
 
-class FruitHub extends StatelessWidget {
-  const FruitHub({super.key});
+class ServiceHup extends StatelessWidget {
+  const ServiceHup({super.key});
 
   @override
   Widget build(BuildContext context) {

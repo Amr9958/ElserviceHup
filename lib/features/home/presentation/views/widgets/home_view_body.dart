@@ -37,7 +37,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                 SizedBox(
                   height: kTopPaddding,
                 ),
-                // CustomHomeAppBar(),
+                CustomHomeAppBar(),
                 SizedBox(
                   height: 16,
                 ),
