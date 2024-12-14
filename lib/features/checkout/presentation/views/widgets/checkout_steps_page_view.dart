@@ -4,7 +4,6 @@ import 'package:fruits_hub/features/checkout/presentation/views/widgets/address_
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/payment_section.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/shipping_section.dart';
 
-import 'checkout_steps.dart';
 
 class CheckoutStepsPageView extends StatelessWidget {
   const CheckoutStepsPageView({

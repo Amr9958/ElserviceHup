@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:fruits_hub/constants.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 import 'package:fruits_hub/core/errors/failures.dart';
@@ -13,7 +13,7 @@ import 'package:fruits_hub/core/utils/backend_endpoint.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 import 'package:fruits_hub/features/auth/domain/entites/user_entity.dart';
 import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
@@ -31,15 +31,13 @@ class AuthRepoImpl extends AuthRepo {
       var userEntity = UserEntity(
         name: name,
         email: email,
-        uId: user.uid,
+        uId: user.id,
       );
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
-      await deleteUser(user);
       return left(ServerFailure(e.message));
     } catch (e) {
-      await deleteUser(user);
       log(
         'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
       );
@@ -51,11 +49,11 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
-  Future<void> deleteUser(User? user) async {
-    if (user != null) {
-      await firebaseAuthService.deleteUser();
-    }
-  }
+  // Future<void> deleteUser(User? user) async {
+  //   if (user != null) {
+  //     await firebaseAuthService.deleteUser();
+  //   }
+  // }
 
   @override
   Future<Either<Failure, UserEntity>> signinWithEmailAndPassword(
@@ -63,7 +61,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
-      var userEntity = await getUserData(uid: user.uid);
+      var userEntity = await getUserData(uid: user.id);
       await saveUserData(user: userEntity);
       return right(
         userEntity,
@@ -90,15 +88,14 @@ class AuthRepoImpl extends AuthRepo {
 
       var userEntity = UserModel.fromFirebaseUser(user);
       var isUserExist = await databaseService.checkIfDataExists(
-          path: BackendEndpoint.isUserExists, docuementId: user.uid);
+          path: BackendEndpoint.isUserExists, docuementId: user.id);
       if (isUserExist) {
-        await getUserData(uid: user.uid);
+        await getUserData(uid: user.id);
       } else {
         await addUserData(user: userEntity);
       }
       return right(userEntity);
     } catch (e) {
-      await deleteUser(user);
       log(
         'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
       );
@@ -115,11 +112,10 @@ class AuthRepoImpl extends AuthRepo {
     User? user;
     try {
       user = await firebaseAuthService.signInWithFacebook();
-      var userEntity = UserModel.fromFirebaseUser(user);
+      var userEntity = UserModel.fromFirebaseUser(user!);
       await addUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
-      await deleteUser(user);
       log(
         'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
       );
@@ -132,27 +128,6 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  // Future<Either<Failure, UserEntity>> signinWithApple() async {
-  //   User? user;
-  //   try {
-  //     user = await firebaseAuthService.signInWithApple();
-
-  //     var userEntity = UserModel.fromFirebaseUser(user);
-  //     await addUserData(user: userEntity);
-  //     return right(userEntity);
-  //   } catch (e) {
-  //     await deleteUser(user);
-  //     log(
-  //       'Exception in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}',
-  //     );
-  //     return left(
-  //       ServerFailure(
-  //         'حدث خطأ ما. الرجاء المحاولة مرة اخرى.',
-  //       ),
-  //     );
-  //   }
-  // }
-
   @override
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(

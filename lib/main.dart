@@ -6,6 +6,7 @@ import 'package:fruits_hub/core/helper_functions/on_generate_routes.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_preferences_singleton.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'core/services/custom_bloc_observer.dart';
 import 'features/splash/presentation/views/splash_view.dart';
@@ -14,7 +15,11 @@ import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Supabase.initialize(
+    url: 'https://mfictrvhmblyljrsajqi.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1maWN0cnZobWJseWxqcnNhanFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM1ODEzNTAsImV4cCI6MjA0OTE1NzM1MH0.eVpebCQX5d0Kf5UFbOXN_x0xBVUSakPpwxVr_kaSxOQ',
+  );
   Bloc.observer = CustomBlocObserver();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

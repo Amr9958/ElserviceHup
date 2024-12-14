@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/constants.dart';
-import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/utils/app_images.dart';
-import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart';
 import 'package:fruits_hub/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../../../../core/services/shared_preferences_singleton.dart';
-import '../../../../home/presentation/views/main_view.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});

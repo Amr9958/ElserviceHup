@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/cubits/products_cubit/products_cubit.dart';
 import 'package:fruits_hub/core/widgets/custom_app_bar.dart';
-import 'package:fruits_hub/features/home/presentation/views/products_view.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_header.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/products_view_header.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/widgets/search_text_field.dart';
 import 'products_grid_view_bloc_builder.dart';
-import 'custom_home_app_bar.dart';
 
 class ProductsViewBody extends StatefulWidget {
   const ProductsViewBody({super.key});

@@ -8,7 +8,7 @@ ProductEntity getDummyProduct() {
     code: '123',
     description: 'Fresh apple',
     price: 2.5,
-    reviews: [],
+    reviews: const [],
     expirationsMonths: 6,
     numberOfCalories: 100,
     unitAmount: 1,

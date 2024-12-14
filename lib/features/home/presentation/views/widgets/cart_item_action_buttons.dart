@@ -4,8 +4,6 @@ import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/home/domain/entites/car_item_entity.dart';
 import 'package:fruits_hub/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/cart_item.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body_bloc_consumer.dart';
 
 class CartItemActionButtons extends StatelessWidget {
   const CartItemActionButtons({super.key, required this.cartItemEntity});

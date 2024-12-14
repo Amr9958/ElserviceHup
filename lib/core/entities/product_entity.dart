@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:fruits_hub/core/entities/review_entity.dart';
