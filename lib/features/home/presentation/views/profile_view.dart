@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/widgets/custom_button.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/edit_profile.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
 import '../../../../core/utils/app_images.dart';
@@ -57,9 +58,14 @@ class ProfileViewBody extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: Text("data", style: TextStyles.semiBold16),
           ),
-          const ProfileLisTileWidget(
-            title: "الملف الشخصي",
-            image: Assets.imagesVuesaxOutlineHome,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, EditProfile.routeName);
+            },
+            child: const ProfileLisTileWidget(
+              title: "الملف الشخصي",
+              image: Assets.imagesVuesaxOutlineHome,
+            ),
           ),
           const ProfileLisTileWidget(
             title: "طلباتي",
