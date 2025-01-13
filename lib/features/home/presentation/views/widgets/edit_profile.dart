@@ -36,28 +36,34 @@ class _EditProfileBodyState extends State<EditProfileBody> {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "المعلومات الشخصية",
+          " المعلومات الشخصية",
           style: TextStyle(fontSize: 20),
         ),
-        CustomTextFormField(hintText: '', textInputType: TextInputType.text),
-        Text(
-          "المعلومات الشخصية",
-          style: TextStyle(fontSize: 20),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CustomTextFormField(
+              hintText: 'الاسم', textInputType: TextInputType.text),
         ),
-        CustomTextFormField(hintText: '', textInputType: TextInputType.text),
-        Text(
-          "المعلومات الشخصية",
-          style: TextStyle(fontSize: 20),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CustomTextFormField(
+              hintText: 'الايميل', textInputType: TextInputType.text),
         ),
-        CustomTextFormField(hintText: '', textInputType: TextInputType.text),
-        Text(
-          "المعلومات الشخصية",
-          style: TextStyle(fontSize: 20),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CustomTextFormField(
+              hintText: 'رقم التليفون', textInputType: TextInputType.number),
         ),
-        CustomTextFormField(hintText: '', textInputType: TextInputType.text),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CustomTextFormField(
+              hintText: 'العنوان', textInputType: TextInputType.text),
+        ),
       ],
     );
   }
