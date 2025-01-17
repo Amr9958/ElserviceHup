@@ -1,18 +1,18 @@
 part of 'profileData_cubit.dart';
 
-sealed class profileDataState {
-  const profileDataState();
+sealed class ProfileDataState {
+  const ProfileDataState();
 }
 
-final class profileDataInitial extends profileDataState {}
+final class ProfileDataInitial extends ProfileDataState {}
 
-final class profileDataUpdatedSuccsess extends profileDataState {
-  final profileDataEntity profileDataEntity;
+final class ProfileDataUpdatedSuccsess extends ProfileDataState {
+  final ProfileDataEntity profileDataEntity;
 
-  const profileDataUpdatedSuccsess(this.profileDataEntity);
+  const ProfileDataUpdatedSuccsess(this.profileDataEntity);
 }
-final class profileDataUpdatedFailure extends profileDataState {
+final class ProfileDataUpdatedFailure extends ProfileDataState {
   final String mess;
 
-  const profileDataUpdatedFailure(this.mess);
+  const ProfileDataUpdatedFailure(this.mess);
 }

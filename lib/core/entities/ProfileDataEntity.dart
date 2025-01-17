@@ -1,7 +1,5 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:fruits_hub/core/entities/review_entity.dart';
-
 class ProfileDataEntity extends Equatable {
   final int id;
   final String username;
@@ -13,11 +11,21 @@ class ProfileDataEntity extends Equatable {
   final String? village;
   final List<String>? addresses;
   final List<String>? phone_numbers;
-  ProfileDataEntity(
+  const ProfileDataEntity(
       {
-        required this.id, 
-     });
+        required this.id,
+        required this.username,
+        required this.email,
+        this.password_hash,
+        this.fcm_token,
+        this.location,
+        this.jop,
+        this.village,
+        this.addresses,
+        this.phone_numbers,
+        
+        });
 
   @override
-  List<Object?> get props => [code];
+  List<Object?> get props => [id, username, email, password_hash, fcm_token, location, jop, village, addresses, phone_numbers];
 }

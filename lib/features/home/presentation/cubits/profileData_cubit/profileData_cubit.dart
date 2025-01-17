@@ -1,13 +1,13 @@
-import 'package:bloc/bloc.dart';
-import 'package:fruits_hub/features/home/domain/entites/car_item_entity.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/entities/ProfileDataEntity.dart';
 
 part 'profileData_state.dart';
 
-class profileDataCubit extends Cubit<profileDataState> {
-  profileDataCubit() : super(profileDataInitial());
+class ProfileDataCubit extends Cubit<ProfileDataState> {
+  ProfileDataCubit() : super(ProfileDataInitial());
 
-  void updateprofileData(profileDataEntity carItem) {
+  void updateprofileData(ProfileDataEntity profileData) {
     
-    emit(profileDataUpdated(carItem));
+    emit(ProfileDataUpdatedSuccsess(profileData));
   }
 }
